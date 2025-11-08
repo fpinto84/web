@@ -101,6 +101,7 @@ const DanceClassesPage: React.FC = () => {
                  <video
                     className="absolute z-0 top-0 left-0 w-full h-full object-cover opacity-20"
                     src="/videos/final-cta-epic.mp4"
+                    poster="/images/video-posters/final-cta-poster.jpg"
                     autoPlay
                     loop
                     muted

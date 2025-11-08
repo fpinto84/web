@@ -1,18 +1,21 @@
-
 import React, { createContext, useState, useContext, ReactNode, useCallback, useEffect } from 'react';
 import type { Locale } from '../types';
-import { translations } from '../i18n/locales';
+import { loadTranslations, type TranslationKeys } from '../i18n/locales';
 
 interface I18nContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string) => string;
+  isLoading: boolean;
 }
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 const LOCALE_STORAGE_KEY = 'fidc_preferred_locale';
 const LOCALE_COOKIE_NAME = 'fidc_locale';
+
+// Translation cache to avoid reloading
+const translationsCache: Partial<Record<Locale, TranslationKeys>> = {};
 
 // Set cookie helper
 const setCookie = (name: string, value: string, days: number = 365) => {
@@ -55,6 +58,42 @@ export const I18nProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return 'es'; // Default to Spanish
   });
 
+  const [currentTranslations, setCurrentTranslations] = useState<TranslationKeys>({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load translations for current locale
+  useEffect(() => {
+    const loadLocale = async () => {
+      setIsLoading(true);
+
+      try {
+        // Check cache first
+        if (translationsCache[locale]) {
+          setCurrentTranslations(translationsCache[locale]!);
+          setIsLoading(false);
+          return;
+        }
+
+        // Load from module
+        const translations = await loadTranslations(locale);
+        translationsCache[locale] = translations;
+        setCurrentTranslations(translations);
+      } catch (error) {
+        console.error(`Failed to load translations for locale: ${locale}`, error);
+        // Fallback to Spanish on error
+        if (locale !== 'es') {
+          const fallback = await loadTranslations('es');
+          translationsCache.es = fallback;
+          setCurrentTranslations(fallback);
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadLocale();
+  }, [locale]);
+
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);
 
@@ -74,45 +113,26 @@ export const I18nProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }, [locale]);
 
   const t = useCallback((key: string): string => {
-    const keys = key.split('.');
-    let result: unknown = translations[locale];
-
-    for (const k of keys) {
-      if (result && typeof result === 'object') {
-        result = (result as Record<string, unknown>)[k];
-      } else {
-        result = undefined;
-        break;
-      }
+    // Return key if still loading
+    if (isLoading) {
+      return key;
     }
 
-    if (result === undefined) {
-      // Fallback to English if translation is missing
-      let fallbackResult: unknown = translations.en;
-      for (const fk of keys) {
-        if (fallbackResult && typeof fallbackResult === 'object') {
-          fallbackResult = (fallbackResult as Record<string, unknown>)[fk];
-        } else {
-          fallbackResult = undefined;
-          break;
-        }
-      }
+    const translation = currentTranslations[key];
 
-      if (typeof fallbackResult === 'string') return fallbackResult;
-
+    if (translation === undefined) {
       // Report missing key in development
       if (import.meta.env.DEV) {
         console.warn(`Missing translation key: ${key} for locale: ${locale}`);
       }
-
       return key;
     }
 
-    return typeof result === 'string' ? result : key;
-  }, [locale]);
+    return translation;
+  }, [currentTranslations, isLoading, locale]);
 
   return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
+    <I18nContext.Provider value={{ locale, setLocale, t, isLoading }}>
       {children}
     </I18nContext.Provider>
   );

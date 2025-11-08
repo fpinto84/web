@@ -8,12 +8,13 @@ const FinalCTA: React.FC = () => {
   return (
     <section id="enroll" className="relative py-24 md:py-40 flex items-center justify-center text-center text-neutral overflow-hidden">
       <div className="absolute inset-0 z-0">
-         <video 
+         <video
           className="w-full h-full object-cover"
-          src="/videos/final-cta-epic.mp4" 
-          autoPlay 
-          loop 
-          muted 
+          src="/videos/final-cta-epic.mp4"
+          poster="/images/video-posters/final-cta-poster.jpg"
+          autoPlay
+          loop
+          muted
           playsInline
           title="Energetic dance performances at FIDC"
         >

@@ -12,6 +12,7 @@ const About: React.FC = () => {
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="/videos/yunaisy-farray-performance.mp4"
+          poster="/images/video-posters/yunaisy-performance-poster.jpg"
           autoPlay
           loop
           muted

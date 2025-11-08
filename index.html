@@ -32,10 +32,24 @@
     <link rel="alternate" hreflang="x-default" href="https://www.farrayscenter.com/es" />
 
 
-    <!-- Preconnect to fonts for performance -->
+    <!-- Performance optimization: Resource Hints -->
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://aistudiocdn.com">
+
+    <!-- Preconnect to critical external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Preload critical fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/index.css" as="style">
+
+    <!-- Prefetch next likely navigation -->
+    <link rel="prefetch" href="/clases" as="document">
 
     <!-- Structured Data (JSON-LD) for SEO and E-E-A-T -->
     <script type="application/ld+json">
