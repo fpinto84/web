@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useI18n } from '../hooks/useI18n';
 import type { DetailedClassInfo } from '../types';
 import AnimateOnScroll from './AnimateOnScroll';
@@ -62,11 +63,40 @@ const detailedClassData: DetailedClassInfo[] = [
 ];
 
 const DanceClassesPage: React.FC = () => {
-    const { t } = useI18n();
+    const { t, locale } = useI18n();
+    const baseUrl = 'https://www.farrayscenter.com';
 
     return (
-        <div className="pt-20 md:pt-24">
-            <section id="classes-hero" className="relative text-center py-20 md:py-28 overflow-hidden bg-black">
+        <>
+            <Helmet>
+                <title>{t('danceClassesPageTitle')}</title>
+                <meta name="description" content={t('danceClassesMetaDescription')} />
+                <link rel="canonical" href={`${baseUrl}/${locale}/clases`} />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${baseUrl}/${locale}/clases`} />
+                <meta property="og:title" content={t('danceClassesPageTitle')} />
+                <meta property="og:description" content={t('danceClassesMetaDescription')} />
+                <meta property="og:image" content={`${baseUrl}/images/og-image-classes.jpg`} />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content={`${baseUrl}/${locale}/clases`} />
+                <meta name="twitter:title" content={t('danceClassesPageTitle')} />
+                <meta name="twitter:description" content={t('danceClassesMetaDescription')} />
+                <meta name="twitter:image" content={`${baseUrl}/images/twitter-image-classes.jpg`} />
+
+                {/* Hreflang tags */}
+                <link rel="alternate" hreflang="es" href={`${baseUrl}/es/clases`} />
+                <link rel="alternate" hreflang="ca" href={`${baseUrl}/ca/clases`} />
+                <link rel="alternate" hreflang="en" href={`${baseUrl}/en/clases`} />
+                <link rel="alternate" hreflang="fr" href={`${baseUrl}/fr/clases`} />
+                <link rel="alternate" hreflang="x-default" href={`${baseUrl}/es/clases`} />
+            </Helmet>
+
+            <div className="pt-20 md:pt-24">
+                <section id="classes-hero" className="relative text-center py-20 md:py-28 overflow-hidden bg-black">
                  <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/40 via-black to-black opacity-70"></div>
                  <video
                     className="absolute z-0 top-0 left-0 w-full h-full object-cover opacity-20"
@@ -126,7 +156,8 @@ const DanceClassesPage: React.FC = () => {
                 </div>
             </section>
             <FinalCTA />
-        </div>
+            </div>
+        </>
     );
 }
 

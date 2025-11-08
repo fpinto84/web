@@ -63,7 +63,7 @@ const Testimonials: React.FC = () => {
                            <p className="text-lg">"{testimonial.quote[locale]}"</p> 
                         </blockquote>
                         <div className="flex items-center space-x-4 mt-auto">
-                            <img src={testimonial.image} alt={testimonial.name} className="w-14 h-14 rounded-full border-2 border-primary-accent object-cover"/>
+                            <img src={testimonial.image} alt={testimonial.name} loading="lazy" className="w-14 h-14 rounded-full border-2 border-primary-accent object-cover"/>
                             <div>
                                 <cite className="font-bold text-lg text-neutral not-italic">{testimonial.name}</cite>
                                 <p className="text-sm text-neutral/60">{testimonial.city[locale]}</p>

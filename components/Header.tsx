@@ -34,12 +34,10 @@ const Header: React.FC = () => {
     setLocale(lang);
   };
 
-  const handleEnrollClick = () => {
+  const handleEnrollClick = (e: React.MouseEvent) => {
     if (location.pathname !== '/') {
-      // Will navigate to home, then scroll after mount
-      setTimeout(() => {
-        document.getElementById('enroll')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      setIsMenuOpen(false);
+      // Let the Link navigate to home, then scroll will happen via the anchor
     }
   };
 
@@ -165,7 +163,7 @@ const Header: React.FC = () => {
           </div>
           <Link
             to="/#enroll"
-            onClick={() => { handleEnrollClick(); setIsMenuOpen(false); }}
+            onClick={(e) => { handleEnrollClick(e); setIsMenuOpen(false); }}
             className="bg-primary-accent text-white text-xl font-bold py-4 px-10 rounded-full transition-all duration-300 hover:bg-white hover:text-primary-accent shadow-md hover:shadow-accent-glow animate-pulse-strong"
           >
             {t('enrollNow')}

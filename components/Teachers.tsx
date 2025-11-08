@@ -58,7 +58,7 @@ const Teachers: React.FC = () => {
               <div className="group bg-black/50 backdrop-blur-md border border-primary-dark/50 rounded-2xl shadow-lg transition-all duration-300 hover:border-primary-accent hover:shadow-accent-glow hover:-translate-y-2 hover:!z-50 p-8 flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary-accent/50 group-hover:border-primary-accent transition-colors duration-300">
                     {teacher.image ? (
-                        <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover"/>
+                        <img src={teacher.image} alt={teacher.name} loading="lazy" className="w-full h-full object-cover"/>
                     ) : (
                         <div className="w-full h-full bg-primary-dark/50 flex items-center justify-center">
                             <UserPlaceholderIcon className="w-24 h-24 text-neutral/40"/>
