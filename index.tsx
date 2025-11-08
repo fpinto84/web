@@ -2,6 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { initSentry } from './utils/sentry';
+
+// Initialize error tracking (only in production with DSN configured)
+initSentry();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
