@@ -1,0 +1,61 @@
+import React from 'react';
+import { useI18n } from '../hooks/useI18n';
+import AnimateOnScroll from './AnimateOnScroll';
+import MethodInfographic from './MethodInfographic';
+
+const About: React.FC = () => {
+  const { t } = useI18n();
+
+  return (
+    <section id="about" className="relative py-20 md:py-32 bg-black overflow-hidden">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src="/videos/yunaisy-farray-performance.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          title="Performance by Yunaisy Farray"
+        >
+          <track kind="captions" src="/videos/captions/captions_en.vtt" srcLang="en" label="English" />
+          <track kind="captions" src="/videos/captions/captions_es.vtt" srcLang="es" label="Español" />
+          <track kind="captions" src="/videos/captions/captions_ca.vtt" srcLang="ca" label="Català" />
+          <track kind="captions" src="/videos/captions/captions_fr.vtt" srcLang="fr" label="Français" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <AnimateOnScroll>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-neutral mb-2">
+                {t('aboutTitle')}
+              </h2>
+              <p className="text-2xl md:text-3xl font-medium text-primary-accent holographic-text">
+                {t('aboutSubtitle')}
+              </p>
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={200}>
+              <div className="text-lg text-neutral/80 leading-relaxed space-y-4" dangerouslySetInnerHTML={{ __html: t('aboutBio').replace(/\n/g, '<br />') }} />
+            </AnimateOnScroll>
+          </div>
+          <AnimateOnScroll delay={400}>
+            <div className="space-y-8 p-8 bg-black/50 backdrop-blur-md border border-primary-accent/20 rounded-lg shadow-2xl">
+              <h3 className="text-3xl font-bold text-primary-accent holographic-text">
+                {t('aboutMethodTitle')}
+              </h3>
+              <MethodInfographic />
+              <a href="#legacy" className="inline-block border-2 border-primary-accent text-primary-accent font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-primary-accent hover:text-white hover:shadow-accent-glow">
+                {t('aboutMethodCTA')}
+              </a>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
