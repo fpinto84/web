@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useI18n } from '../hooks/useI18n';
 import AnimateOnScroll from './AnimateOnScroll';
 import FinalCTA from './FinalCTA';
@@ -41,6 +42,7 @@ const dancehallPillars: ValuePillar[] = [
 
 const DancehallPage: React.FC = () => {
     const { t, locale } = useI18n();
+    const baseUrl = 'https://www.farrayscenter.com';
 
     const dancehallTestimonials: Testimonial[] = [
       { id: 1, name: t('dancehallTestimonial1Name'), image: '/images/testimonials/marco-v.jpg', rating: 5, 
@@ -52,9 +54,37 @@ const DancehallPage: React.FC = () => {
     ];
 
     return (
-        <div className="pt-20 md:pt-24">
-            {/* Hero */}
-            <section id="dancehall-hero" className="relative text-center py-24 md:py-32 overflow-hidden bg-black flex items-center justify-center">
+        <>
+            <Helmet>
+                <title>{t('dancehallPageTitle')}</title>
+                <meta name="description" content={t('dancehallMetaDescription')} />
+                <link rel="canonical" href={`${baseUrl}/${locale}/dancehall`} />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${baseUrl}/${locale}/dancehall`} />
+                <meta property="og:title" content={t('dancehallPageTitle')} />
+                <meta property="og:description" content={t('dancehallMetaDescription')} />
+                <meta property="og:image" content={`${baseUrl}/images/og-image-dancehall.jpg`} />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content={`${baseUrl}/${locale}/dancehall`} />
+                <meta name="twitter:title" content={t('dancehallPageTitle')} />
+                <meta name="twitter:description" content={t('dancehallMetaDescription')} />
+                <meta name="twitter:image" content={`${baseUrl}/images/twitter-image-dancehall.jpg`} />
+
+                {/* Hreflang tags */}
+                <link rel="alternate" hreflang="es" href={`${baseUrl}/es/dancehall`} />
+                <link rel="alternate" hreflang="ca" href={`${baseUrl}/ca/dancehall`} />
+                <link rel="alternate" hreflang="en" href={`${baseUrl}/en/dancehall`} />
+                <link rel="alternate" hreflang="fr" href={`${baseUrl}/fr/dancehall`} />
+                <link rel="alternate" hreflang="x-default" href={`${baseUrl}/es/dancehall`} />
+            </Helmet>
+
+            <div className="pt-20 md:pt-24">
+                {/* Hero */}
+                <section id="dancehall-hero" className="relative text-center py-24 md:py-32 overflow-hidden bg-black flex items-center justify-center">
                  <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/40 via-black to-black opacity-70 z-10"></div>
                  <video
                     className="absolute z-0 top-0 left-0 w-full h-full object-cover opacity-30"
@@ -157,7 +187,7 @@ const DancehallPage: React.FC = () => {
                     <AnimateOnScroll delay={200} className="max-w-4xl mx-auto">
                       <div className="group bg-black/50 backdrop-blur-md border border-primary-dark/50 rounded-2xl shadow-lg p-8 flex flex-col md:flex-row items-center gap-8">
                         <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary-accent/50 group-hover:border-primary-accent transition-colors duration-300">
-                           <img src="/images/teachers/isabella-king.jpg" alt={t('dancehallInstructorName')} className="w-full h-full object-cover"/>
+                           <img src="/images/teachers/isabella-king.jpg" alt={t('dancehallInstructorName')} loading="lazy" className="w-full h-full object-cover"/>
                         </div>
                         <div className="text-center md:text-left">
                             <h3 className="text-3xl font-bold text-neutral">{t('dancehallInstructorName')}</h3>
@@ -188,7 +218,7 @@ const DancehallPage: React.FC = () => {
                                         <p className="text-lg">"{testimonial.quote[locale]}"</p> 
                                     </blockquote>
                                     <div className="flex items-center space-x-4 mt-auto">
-                                        <img src={testimonial.image} alt={testimonial.name} className="w-14 h-14 rounded-full border-2 border-primary-accent object-cover"/>
+                                        <img src={testimonial.image} alt={testimonial.name} loading="lazy" className="w-14 h-14 rounded-full border-2 border-primary-accent object-cover"/>
                                         <div>
                                             <cite className="font-bold text-lg text-neutral not-italic">{testimonial.name}</cite>
                                             <p className="text-sm text-neutral/60">{testimonial.city[locale]}</p>
@@ -202,7 +232,8 @@ const DancehallPage: React.FC = () => {
             </section>
 
             <FinalCTA />
-        </div>
+            </div>
+        </>
     );
 }
 
