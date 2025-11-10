@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useI18n } from '../hooks/useI18n';
 import type { Locale } from '../types';
 import FIDCLogo from './FIDCLogo';
@@ -17,8 +17,9 @@ const CloseIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 );
 
 const Header: React.FC = () => {
-  const { t, setLocale, locale } = useI18n();
+  const { t, locale } = useI18n();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -30,22 +31,38 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Get current path without locale prefix, preserving query and hash
+  const getCurrentPath = (): string => {
+    const pathParts = location.pathname.split('/').filter(Boolean);
+    // Remove locale from path if present
+    if (pathParts.length > 0 && ['es', 'en', 'ca', 'fr'].includes(pathParts[0])) {
+      pathParts.shift();
+    }
+    const path = pathParts.length > 0 ? `/${pathParts.join('/')}` : '/';
+    // Preserve query string and hash
+    const query = location.search;
+    const hash = location.hash;
+    return path + query + hash;
+  };
+
   const handleLanguageChange = (lang: Locale) => {
-    setLocale(lang);
+    const currentPath = getCurrentPath();
+    const newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`;
+    navigate(newPath);
   };
 
   const handleEnrollClick = (e: React.MouseEvent) => {
-    if (location.pathname !== '/') {
+    if (location.pathname !== `/${locale}`) {
       setIsMenuOpen(false);
       // Let the Link navigate to home, then scroll will happen via the anchor
     }
   };
 
   const navLinks: { path: string; textKey: string }[] = [
-    { path: '/', textKey: 'navHome' },
-    { path: '/clases', textKey: 'navClasses' },
-    { path: '/dancehall', textKey: 'navDancehall' },
-    { path: '/afrobeats', textKey: 'navAfrobeats' }
+    { path: `/${locale}`, textKey: 'navHome' },
+    { path: `/${locale}/clases`, textKey: 'navClasses' },
+    { path: `/${locale}/dancehall`, textKey: 'navDancehall' },
+    { path: `/${locale}/afrobeats`, textKey: 'navAfrobeats' }
   ];
 
   return (
@@ -56,7 +73,7 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" aria-label="FIDC Home">
+          <Link to={`/${locale}`} aria-label="FIDC Home">
             <FIDCLogo />
           </Link>
 
@@ -99,7 +116,7 @@ const Header: React.FC = () => {
             </div>
 
             <Link
-              to="/#enroll"
+              to={`/${locale}#enroll`}
               onClick={handleEnrollClick}
               className="bg-primary-accent text-white font-bold py-2 px-6 rounded-full transition-all duration-300 hover:bg-white hover:text-primary-accent shadow-md hover:shadow-accent-glow animate-pulse-strong"
             >
@@ -163,7 +180,7 @@ const Header: React.FC = () => {
             ))}
           </div>
           <Link
-            to="/#enroll"
+            to={`/${locale}#enroll`}
             onClick={(e) => { handleEnrollClick(e); setIsMenuOpen(false); }}
             className="bg-primary-accent text-white text-xl font-bold py-4 px-10 rounded-full transition-all duration-300 hover:bg-white hover:text-primary-accent shadow-md hover:shadow-accent-glow animate-pulse-strong"
           >

@@ -240,6 +240,20 @@ routes.forEach(route => {
   html = html.replace(/<html([^>]*)lang="[^"]*"/, `<html$1lang="${lang}"`);
   html = html.replace(/<html(?![^>]*lang=)/, `<html lang="${lang}"`);
 
+  // Remove existing SEO meta tags to prevent duplicates
+  // Remove title tags (after the first one from charset/viewport section)
+  html = html.replace(/<title>.*?<\/title>/g, '');
+  // Remove description meta tags
+  html = html.replace(/<meta\s+name="description"[^>]*>/gi, '');
+  // Remove canonical links
+  html = html.replace(/<link\s+rel="canonical"[^>]*>/gi, '');
+  // Remove hreflang links
+  html = html.replace(/<link\s+rel="alternate"\s+hreflang="[^"]*"[^>]*>/gi, '');
+  // Remove Open Graph tags
+  html = html.replace(/<meta\s+property="og:[^"]*"[^>]*>/gi, '');
+  // Remove Twitter Card tags
+  html = html.replace(/<meta\s+(?:name|property)="twitter:[^"]*"[^>]*>/gi, '');
+
   // Inject metadata in <head>
   html = html.replace('</head>', `
     <title>${meta.title}</title>
