@@ -31,14 +31,18 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Get current path without locale prefix
+  // Get current path without locale prefix, preserving query and hash
   const getCurrentPath = (): string => {
     const pathParts = location.pathname.split('/').filter(Boolean);
     // Remove locale from path if present
     if (pathParts.length > 0 && ['es', 'en', 'ca', 'fr'].includes(pathParts[0])) {
       pathParts.shift();
     }
-    return pathParts.length > 0 ? `/${pathParts.join('/')}` : '/';
+    const path = pathParts.length > 0 ? `/${pathParts.join('/')}` : '/';
+    // Preserve query string and hash
+    const query = location.search;
+    const hash = location.hash;
+    return path + query + hash;
   };
 
   const handleLanguageChange = (lang: Locale) => {

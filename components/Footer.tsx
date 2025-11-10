@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useI18n } from '../hooks/useI18n';
 import FIDCLogo from './FIDCLogo';
 
@@ -8,11 +9,20 @@ const SocialIcon: React.FC<{ href: string; ariaLabel: string; children: React.Re
   </a>
 );
 
-const FooterLink: React.FC<{ href?: string; textKey: string; }> = ({ href = "#", textKey }) => {
+const FooterLink: React.FC<{ to?: string; href?: string; textKey: string; }> = ({ to, href, textKey }) => {
     const { t } = useI18n();
+    if (to) {
+        return (
+            <li>
+                <Link to={to} className="hover:text-primary-accent transition-colors duration-200">
+                    {t(textKey)}
+                </Link>
+            </li>
+        );
+    }
     return (
         <li>
-            <a href={href} className="hover:text-primary-accent transition-colors duration-200">
+            <a href={href || "#"} className="hover:text-primary-accent transition-colors duration-200">
                 {t(textKey)}
             </a>
         </li>
@@ -20,7 +30,7 @@ const FooterLink: React.FC<{ href?: string; textKey: string; }> = ({ href = "#",
 };
 
 const Footer: React.FC = () => {
-    const { t } = useI18n();
+    const { t, locale } = useI18n();
 
   return (
     <footer className="bg-black border-t border-primary-dark/30 py-12">
@@ -66,18 +76,18 @@ const Footer: React.FC = () => {
              <h4 className="font-bold text-neutral text-lg mb-4">{t('footerSitemapTitle')}</h4>
              <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                 <ul className="space-y-2 text-sm">
-                    <FooterLink textKey="sitemapSchool" />
-                    <FooterLink textKey="sitemapYunaisy" />
-                    <FooterLink textKey="sitemapKids" />
+                    <FooterLink to={`/${locale}`} textKey="sitemapSchool" />
+                    <FooterLink to={`/${locale}/clases`} textKey="navClasses" />
+                    <FooterLink to={`/${locale}/dancehall`} textKey="navDancehall" />
+                    <FooterLink to={`/${locale}/afrobeats`} textKey="navAfrobeats" />
                     <FooterLink textKey="sitemapSocial" />
-                    <FooterLink textKey="sitemapUrban" />
                 </ul>
                 <ul className="space-y-2 text-sm">
                     <FooterLink textKey="sitemapFitness" />
                     <FooterLink textKey="sitemapSchedule" />
-                    <FooterLink textKey="sitemapFAQ" />
+                    <FooterLink to={`/${locale}#faq`} textKey="sitemapFAQ" />
                     <FooterLink textKey="sitemapContact" />
-                    <FooterLink textKey="sitemapCID" />
+                    <FooterLink href="https://www.cid-unesco.org" textKey="sitemapCID" />
                 </ul>
              </div>
            </div>

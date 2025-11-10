@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Spanish Pages -->
+  <url>
+    <loc>https://www.farrayscenter.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.farrayscenter.com/es"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/es/clases</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/clases"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/clases"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/clases"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/clases"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/es/dancehall</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/dancehall"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/es/afrobeats</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/afrobeats"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Catalan Pages -->
+  <url>
+    <loc>https://www.farrayscenter.com/ca</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/ca/clases</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/clases"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/clases"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/clases"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/clases"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/ca/dancehall</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/dancehall"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/ca/afrobeats</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/afrobeats"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- English Pages -->
+  <url>
+    <loc>https://www.farrayscenter.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/en/clases</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/clases"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/clases"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/clases"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/clases"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/en/dancehall</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/dancehall"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/en/afrobeats</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/afrobeats"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- French Pages -->
+  <url>
+    <loc>https://www.farrayscenter.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/fr/clases</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/clases"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/clases"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/clases"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/clases"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/fr/dancehall</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/dancehall"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/dancehall"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.farrayscenter.com/fr/afrobeats</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.farrayscenter.com/es/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.farrayscenter.com/ca/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.farrayscenter.com/en/afrobeats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.farrayscenter.com/fr/afrobeats"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

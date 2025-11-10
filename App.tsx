@@ -10,11 +10,15 @@ import SkipLink from './components/SkipLink';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
+import NotFoundPage from './components/NotFoundPage';
 
 // Code splitting: Lazy load secondary pages to reduce initial bundle size
 const DanceClassesPage = lazy(() => import('./components/DanceClassesPage'));
 const DancehallPage = lazy(() => import('./components/DancehallPage'));
 const AfrobeatsPage = lazy(() => import('./components/AfrobeatsPage'));
+
+// Valid locales
+const VALID_LOCALES: Locale[] = ['es', 'en', 'ca', 'fr'];
 
 const ScrollToTop: React.FC = () => {
   const location = useLocation();
@@ -26,13 +30,18 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
-// Component to sync URL locale with i18n context
+// Component to sync URL locale with i18n context and validate
 const LocaleSync: React.FC = () => {
   const { locale: urlLocale } = useParams<{ locale: Locale }>();
-  const { setLocale } = useI18n();
+  const { setLocale, locale } = useI18n();
+
+  // Validate locale and redirect if invalid
+  if (urlLocale && !VALID_LOCALES.includes(urlLocale as Locale)) {
+    return <Navigate to={`/${locale}`} replace />;
+  }
 
   useEffect(() => {
-    if (urlLocale && ['es', 'en', 'ca', 'fr'].includes(urlLocale)) {
+    if (urlLocale && VALID_LOCALES.includes(urlLocale as Locale)) {
       setLocale(urlLocale as Locale);
     }
   }, [urlLocale, setLocale]);
@@ -65,10 +74,16 @@ const AppContent: React.FC = () => {
             <Route path="/:locale/dancehall" element={<><LocaleSync /><DancehallPage /></>} />
             <Route path="/:locale/afrobeats" element={<><LocaleSync /><AfrobeatsPage /></>} />
 
+            {/* 404 pages - localized */}
+            <Route path="/:locale/404" element={<><LocaleSync /><NotFoundPage /></>} />
+
             {/* Legacy routes without locale - redirect to current locale */}
             <Route path="/clases" element={<Navigate to={`/${locale}/clases`} replace />} />
             <Route path="/dancehall" element={<Navigate to={`/${locale}/dancehall`} replace />} />
             <Route path="/afrobeats" element={<Navigate to={`/${locale}/afrobeats`} replace />} />
+
+            {/* Catch-all for 404 - redirect to localized 404 page */}
+            <Route path="*" element={<Navigate to={`/${locale}/404`} replace />} />
           </Routes>
         </Suspense>
       </main>
